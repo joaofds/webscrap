@@ -23,11 +23,13 @@ if response.status_code == 200:
     if os.path.exists(filename):
         os.remove(filename)
 
-    # Abrir um arquivo de texto para salvar os nomes e e-mails
+    # Abrir um arquivo de texto para salvar os dados
     with open(filename, 'w') as file:
         for field in info_fields:
-            # Extrair o nome
+            # Extrair o nome, matricula e email
             full_text = field.find('dd', class_='negrito').get_text(strip=True)
+
+            # Separa nome e matricula e remove parenteses
             name, id = full_text.rsplit(' ', 1)
             id = id.replace('(', '').replace(')', '')
 
