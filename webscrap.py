@@ -34,9 +34,6 @@ if response.status_code == 200:
             # Extrair o e-mail
             email_tag = field.find('a', href=True)
             email = email_tag.get_text(strip=True) if email_tag else "E-mail não encontrado"
-            
-            # Tamanho do preenchimento da linha
-            width = 50 - len(name)
 
             # Escrever no arquivo
             file.write(f'{name},{' ' * (48 - len(name))}{id},{' ' * (16 - len(id))}{email}\n')
